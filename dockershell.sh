@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run -it fredericklab/basecontainer_plus:latest bash
+docker run -it basecontainer_plus:latest bash

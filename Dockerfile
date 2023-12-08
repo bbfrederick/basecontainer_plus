@@ -22,7 +22,7 @@ ENV FSLDEVDIR=${CONDA_PREFIX}
 #RUN $FSLDIR/etc/fslconf/fsl-devel.sh
 
 # Copy the install script
-COPY . /src/basecontainer-plus
+COPY . /src/basecontainer_plus
 
 #RUN buildfsl.sh
 
@@ -34,9 +34,9 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="basecontainer-plus" \
+      org.label-schema.name="basecontainer_plus" \
       org.label-schema.description="updated mambaforge container for fredericklab containers" \
       org.label-schema.url="http://nirs-fmri.net" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/bbfrederick/basecontainer-plus" \
+      org.label-schema.vcs-url="https://github.com/bbfrederick/basecontainer_plus" \
       org.label-schema.version=$VERSION
