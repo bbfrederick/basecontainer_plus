@@ -16,10 +16,10 @@ RUN mamba create \
     fsl-misc_tcl \
     fsl-misc_scripts
 
-#source <base-conda-environment>/bin/activate ./fsl
-#ENV FSLDIR=${CONDA_PREFIX}
-#ENV FSLDEVDIR=${CONDA_PREFIX}
-#RUN source $FSLDIR/etc/fslconf/fsl-devel.sh
+RUN /opt/conda/bin/activate ./fsl
+ENV FSLDIR=${CONDA_PREFIX}
+ENV FSLDEVDIR=${CONDA_PREFIX}
+#RUN $FSLDIR/etc/fslconf/fsl-devel.sh
 
 # Copy the install script
 COPY . /src/basecontainer-plus

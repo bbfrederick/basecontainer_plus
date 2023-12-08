@@ -11,5 +11,5 @@ docker run \
     -it \
     -e DISPLAY=${MYIPADDRESS}:0 \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    fredericklab/basecontainer:latest \
+    fredericklab/basecontainer_plus:latest \
     xterm
