@@ -1,7 +1,7 @@
 # Use condaforge/mambaforge to save time getting a fast python environment
 FROM fredericklab/basecontainer:latest
 
-RUN mamba create \
+RUN mamba create -y \
     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
     -c conda-forge \
     -p ./fsl \
@@ -16,15 +16,15 @@ RUN mamba create \
     fsl-misc_tcl \
     fsl-misc_scripts
 
-RUN /opt/conda/bin/activate ./fsl
-ENV FSLDIR=${CONDA_PREFIX}
-ENV FSLDEVDIR=${CONDA_PREFIX}
-#RUN $FSLDIR/etc/fslconf/fsl-devel.sh
+RUN /opt/conda/bin/activate /fsl
+ENV FSLDIR=/fsl
+ENV FSLDEVDIR=/fsl
+RUN source $FSLDIR/etc/fslconf/fsl-devel.sh
 
 # Copy the install script
 COPY . /src/basecontainer_plus
 
-#RUN buildfsl.sh
+RUN cd /src/basecontainer_plus; ./buildfsl.sh
 
 ENV IS_DOCKER_8395080871=1
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
