@@ -9,4 +9,4 @@ while read dep; do
    make
    make install
    cd ..
-done < /src/basecontainer_plus/fsldeps.txt
+done < ${FSLDIR}/src/fsldeps.txt
