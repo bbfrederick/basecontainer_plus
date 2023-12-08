@@ -1,7 +1,7 @@
 # Use condaforge/mambaforge to save time getting a fast python environment
 FROM fredericklab/basecontainer:latest
 
-RUN apt-get install -y vim
+#RUN apt-get install -y vim
 
 RUN mamba create -y \
     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
