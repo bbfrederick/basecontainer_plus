@@ -7,15 +7,18 @@ RUN mamba create -y \
     -p ./fsl \
     make \
     cxx-compiler \
-    zlib \
     boost-cpp \
     openblas \
-    nlohmann_json     \
+    zlib \
+    nlohmann_json 
+
+RUN /opt/conda/bin/activate /fsl
+
+RUN mamba install -y \
+    -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
     fsl-base \
     fsl-data_standard \
     fsl-misc_tcl 
-
-RUN /opt/conda/bin/activate /fsl
 
 #RUN mamba install -y fsl-misc_scripts
 
