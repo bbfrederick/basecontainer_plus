@@ -1,5 +1,5 @@
 # Use condaforge/mambaforge to save time getting a fast python environment
-FROM fredericklab/basecontainer:v0.2.9.2
+FROM fredericklab/basecontainer:latest-release
 
 RUN mamba create -y \
     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
@@ -29,6 +29,8 @@ COPY ./buildfsl.sh ${FSLDIR}/src
 COPY ./fsldeps.txt ${FSLDIR}/src
 
 RUN cd $FSLDIR/src; ./buildfsl.sh
+
+ENV PATH="${PATH}:${FSLDIR}/bin"
 
 ENV IS_DOCKER_8395080871=1
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
