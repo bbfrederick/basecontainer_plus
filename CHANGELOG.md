@@ -1,5 +1,8 @@
 # Release history
 
+## Version 0.0.3 (12/11/23)
+* Added caching to build.
+
 ## Version 0.0.2 (12/11/23)
 * First apparently working build
 
