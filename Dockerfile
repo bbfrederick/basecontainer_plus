@@ -28,7 +28,11 @@ RUN source $FSLDIR/etc/fslconf/fsl-devel.sh
 COPY ./buildfsl.sh ${FSLDIR}/src
 COPY ./fsldeps.txt ${FSLDIR}/src
 
+# now run it
 RUN cd $FSLDIR/src; ./buildfsl.sh
+
+# Copy eye.mat
+RUN mkdir -p ${FSLDIR}/data/atlases/bin; cp ./eye.mat ${FSLDIR}/data/atlases/bin
 
 ENV PATH="${PATH}:${FSLDIR}/bin"
 
