@@ -32,7 +32,8 @@ COPY ./fsldeps.txt ${FSLDIR}/src
 RUN cd $FSLDIR/src; ./buildfsl.sh
 
 # Copy eye.mat
-RUN mkdir -p ${FSLDIR}/data/atlases/bin; cp ./eye.mat ${FSLDIR}/data/atlases/bin
+RUN mkdir -p $FSLDIR/data/atlases/bin
+COPY ./eye.mat $FSLDIR/data/atlases/bin
 
 ENV PATH="${PATH}:${FSLDIR}/bin"
 
