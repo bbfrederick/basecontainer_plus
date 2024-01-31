@@ -1,0 +1,29 @@
+# OS Things
+*.swp
+*/*.swp
+*/*/*.swp
+.thumbnails
+
+# mac desktop files
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+
+# editor things
+.idea
+
+# cache
+.cache
+__pycache__
+
+# temporary manual files
+docs/~$Manual.html
+docs/Manual.fld
+
+# notes to myself
+files.txt
+
+# files for local testing
+
+# temporary items
+VERSION
