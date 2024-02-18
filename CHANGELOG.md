@@ -1,5 +1,8 @@
 # Release history
 
+## Version 0.0.4 (2/18/24)
+* Sync with new basecontainer
+
 ## Version 0.0.3 (12/12/23)
 * Added caching to build.
 * Added $FSLDIR/data/atlases/bin/eye.mat to container.
