@@ -1,5 +1,8 @@
 # Release history
 
+## Version 0.0.5 (2/19/24)
+* Reduce disk usage on build
+
 ## Version 0.0.4 (2/18/24)
 * Sync with new basecontainer
 
