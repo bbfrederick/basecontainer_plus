@@ -40,7 +40,7 @@ ENV PATH="${PATH}:${FSLDIR}/bin"
 ENV IS_DOCKER_8395080871=1
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN echo TZ=GMT date "+%Y-%m-%d %H:%M:%S" > /root/buildtime-basecontainer_plus
+RUN cd /root; TZ=GMT date "+%Y-%m-%d %H:%M:%S" > buildtime-basecontainer_plus
 
 ARG VERSION
 ARG BUILD_DATE
