@@ -1,4 +1,4 @@
-# Use condaforge/mambaforge to save time getting a fast python environment
+# Start from the latest basecontainer
 FROM fredericklab/basecontainer:latest-release
 
 RUN mamba create -y \
