@@ -1,5 +1,5 @@
 # Start from the latest basecontainer
-FROM fredericklab/basecontainer:latest-release AS base
+FROM fredericklab/basecontainer:latest-release
 
 RUN mamba create -y \
     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
@@ -15,7 +15,6 @@ RUN mamba create -y \
     fsl-data_standard \
     fsl-misc_tcl 
 
-FROM base AS stage1
 RUN /opt/conda/bin/activate /fsl
 
 #RUN mamba install -y fsl-misc_scripts
@@ -30,7 +29,6 @@ COPY ./buildfsl.sh ${FSLDIR}/src
 COPY ./fsldeps.txt ${FSLDIR}/src
 
 # now run it
-FROM base AS stage2
 RUN cd $FSLDIR/src; ./buildfsl.sh
 
 # Copy eye.mat
@@ -40,8 +38,9 @@ COPY ./eye.mat $FSLDIR/data/atlases/bin
 ENV PATH="${PATH}:${FSLDIR}/bin"
 
 ENV IS_DOCKER_8395080871=1
-FROM base AS stage3
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN echo TZ=GMT date "+%Y-%m-%d %H:%M:%S" > /root/buildtime-basecontainer_plus
 
 ARG VERSION
 ARG BUILD_DATE

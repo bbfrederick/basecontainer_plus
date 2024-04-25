@@ -1,5 +1,8 @@
 # Release history
 
+## Version 0.0.7 (4/25/24)
+* Undid build stages
+
 ## Version 0.0.6 (4/25/24)
 * Rebuild on the new basecontainer with pyfftw removed
 * Added named build stages
