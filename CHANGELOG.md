@@ -1,5 +1,8 @@
 # Release history
 
+## Version 0.0.8 (6/12/24)
+* Rebuild on new basecontainer with python 3.12
+
 ## Version 0.0.7 (4/25/24)
 * Undid build stages
 
