@@ -3,15 +3,12 @@ FROM fredericklab/basecontainer:latest
 
 USER root
 RUN pwd
-RUN mkdir ./fsl;chown default ./fsl
-
-# Switch to default user to install 
-#USER default
+RUN mkdir /fsl;chown default /fsl
 
 RUN /opt/miniforge3/bin/mamba create -y \
     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
     -c conda-forge \
-    -p ./fsl \
+    -p /fsl \
     make \
     cxx-compiler \
     boost-cpp \
@@ -20,19 +17,19 @@ RUN /opt/miniforge3/bin/mamba create -y \
     nlohmann_json \
     fsl-base \
     fsl-data_standard \
-    fsl-misc_tcl 
-#    fsl-misc_scripts
+    fsl-misc_tcl \
+    "fsl-misc_scripts==2111.0"
 
-RUN /opt/miniforge3/bin/activate ./fsl
+RUN /opt/miniforge3/bin/activate /fsl
 
-ENV FSLDIR=./fsl
-ENV FSLDEVDIR=./fsl
+ENV FSLDIR=/fsl
+ENV FSLDEVDIR=/fsl
 ENV FSLCONFDIR=$FSLDIR/config
 RUN source $FSLDIR/etc/fslconf/fsl-devel.sh
 
 # set up the bashrc file
 RUN echo "# FSL Setup" >> ~/.bashrc
-RUN echo "FSLDIR=./fsl" >> ~/.bashrc
+RUN echo "FSLDIR=/fsl" >> ~/.bashrc
 RUN echo "PATH=${FSLDIR}/share/fsl/bin:${PATH}" >> ~/.bashrc
 RUN echo "export FSLDIR PATH" >> ~/.bashrc
 RUN echo ". ${FSLDIR}/etc/fslconf/fsl-devel.sh" >> ~/.bashrc
@@ -53,7 +50,7 @@ ENV PATH="${PATH}:${FSLDIR}/bin"
 ENV IS_DOCKER_8395080871=1
 
 # make everything world accessible
-RUN chmod -R a+rx ./fsl
+RUN chmod -R a+rx /fsl
 
 USER root
 

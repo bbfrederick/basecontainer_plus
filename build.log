@@ -1,7 +1,7 @@
 #0 building with "desktop-linux" instance using docker driver
 
 #1 [internal] load build definition from Dockerfile
-#1 transferring dockerfile: 2.18kB done
+#1 transferring dockerfile: 2.13kB done
 #1 DONE 0.0s
 
 #2 [internal] load metadata for docker.io/fredericklab/basecontainer:latest
@@ -11,236 +11,62 @@
 #3 transferring context: 2B done
 #3 DONE 0.0s
 
-#4 [internal] load build context
+#4 [ 1/24] FROM docker.io/fredericklab/basecontainer:latest@sha256:07f0b181ffd279ae9699cd27ef17e9e773539ed14f21833695bfbd027d8b79b5
+#4 resolve docker.io/fredericklab/basecontainer:latest@sha256:07f0b181ffd279ae9699cd27ef17e9e773539ed14f21833695bfbd027d8b79b5 done
 #4 DONE 0.0s
 
-#5 [ 1/24] FROM docker.io/fredericklab/basecontainer:latest@sha256:07f0b181ffd279ae9699cd27ef17e9e773539ed14f21833695bfbd027d8b79b5
-#5 resolve docker.io/fredericklab/basecontainer:latest@sha256:07f0b181ffd279ae9699cd27ef17e9e773539ed14f21833695bfbd027d8b79b5
-#5 ...
-
-#6 [auth] fredericklab/basecontainer:pull token for registry-1.docker.io
-#6 DONE 0.0s
-
-#5 [ 1/24] FROM docker.io/fredericklab/basecontainer:latest@sha256:07f0b181ffd279ae9699cd27ef17e9e773539ed14f21833695bfbd027d8b79b5
-#5 resolve docker.io/fredericklab/basecontainer:latest@sha256:07f0b181ffd279ae9699cd27ef17e9e773539ed14f21833695bfbd027d8b79b5 0.4s done
-#5 DONE 0.4s
-
-#5 [ 1/24] FROM docker.io/fredericklab/basecontainer:latest@sha256:07f0b181ffd279ae9699cd27ef17e9e773539ed14f21833695bfbd027d8b79b5
+#5 [ 2/24] RUN pwd
 #5 CACHED
 
-#4 [internal] load build context
-#4 transferring context: 314B done
-#4 DONE 0.0s
+#6 [ 3/24] RUN mkdir /fsl;chown default /fsl
+#6 CACHED
 
-#7 [ 2/24] RUN pwd
-#7 0.719 /
-#7 DONE 0.7s
+#7 [internal] load build context
+#7 transferring context: 314B done
+#7 DONE 0.0s
 
-#8 [ 3/24] RUN mkdir ./fsl;chown default ./fsl
-#8 DONE 0.5s
-
-#9 [ 4/24] RUN /opt/miniforge3/bin/mamba create -y     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/     -c conda-forge     -p ./fsl     make     cxx-compiler     boost-cpp     openblas     zlib     nlohmann_json     fsl-base     fsl-data_standard     fsl-misc_tcl
-#9 1.336 warning  libmamba Cache file "/opt/miniforge3/pkgs/cache/d9d93fba.json" was modified by another program
-#9 1.336 warning  libmamba Cache file "/opt/miniforge3/pkgs/cache/09cdf8bf.json" was modified by another program
-#9 6.775 Transaction
-#9 6.775 
-#9 6.775   Prefix: /fsl
-#9 6.775 
-#9 6.775   Updating specs:
-#9 6.775 
-#9 6.775    - make
-#9 6.775    - cxx-compiler
-#9 6.775    - boost-cpp
-#9 6.775    - openblas
-#9 6.775    - zlib
-#9 6.775    - nlohmann_json
-#9 6.775    - fsl-base
-#9 6.775    - fsl-data_standard
-#9 6.775    - fsl-misc_tcl
-#9 6.775 
-#9 6.775 
-#9 6.777   Package                               Version  Build                     Channel                                               Size
-#9 6.777 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-#9 6.777   Install:
-#9 6.777 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-#9 6.777 
-#9 6.777   + fsl-data_standard                    2208.0  0                         fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public      196MB
-#9 6.777   + libboost-headers                     1.85.0  h8af1aa0_4                conda-forge                                           14MB
-#9 6.777   + libgomp                              14.2.0  he277a41_1                conda-forge                                         Cached
-#9 6.777   + python_abi                             3.13  5_cp313                   conda-forge                                            6kB
-#9 6.777   + ld_impl_linux-aarch64                  2.43  h80caac9_2                conda-forge                                         Cached
-#9 6.777   + ca-certificates                   2024.8.30  hcefe29a_0                conda-forge                                         Cached
-#9 6.777   + _openmp_mutex                           4.5  2_gnu                     conda-forge                                         Cached
-#9 6.777   + libgcc                               14.2.0  he277a41_1                conda-forge                                         Cached
-#9 6.777   + c-ares                               1.34.2  ha64f414_0                conda-forge                                         Cached
-#9 6.777   + openssl                               3.3.2  h86ecc28_0                conda-forge                                         Cached
-#9 6.777   + libexpat                              2.6.3  h5ad3122_0                conda-forge                                         Cached
-#9 6.777   + libgfortran5                         14.2.0  hb6113d0_1                conda-forge                                            1MB
-#9 6.777   + libstdcxx                            14.2.0  h3f4de04_1                conda-forge                                         Cached
-#9 6.777   + libgcc-ng                            14.2.0  he9431aa_1                conda-forge                                         Cached
-#9 6.777   + libzlib                               1.3.1  h86ecc28_2                conda-forge                                         Cached
-#9 6.777   + make                                  4.4.1  h2a6d0cb_2                conda-forge                                          528kB
-#9 6.777   + libgfortran                          14.2.0  he9431aa_1                conda-forge                                           54kB
-#9 6.777   + libsanitizer                         13.3.0  ha58e236_1                conda-forge                                            4MB
-#9 6.777   + libstdcxx-ng                         14.2.0  hf1166c9_1                conda-forge                                         Cached
-#9 6.777   + libev                                  4.33  h31becfc_2                conda-forge                                         Cached
-#9 6.777   + keyutils                              1.6.1  h4e544f5_0                conda-forge                                         Cached
-#9 6.777   + libffi                                3.4.2  h3557bc0_5                conda-forge                                         Cached
-#9 6.777   + yaml                                  0.2.5  hf897c2e_2                conda-forge                                           93kB
-#9 6.777   + ncurses                                 6.5  hcccb83c_1                conda-forge                                         Cached
-#9 6.777   + libuuid                              2.38.1  hb4cce97_0                conda-forge                                         Cached
-#9 6.777   + libmpdec                              4.0.0  h68df207_0                conda-forge                                          110kB
-#9 6.777   + bzip2                                 1.0.8  h68df207_7                conda-forge                                         Cached
-#9 6.777   + xz                                    5.2.6  h9cdd2b7_0                conda-forge                                         Cached
-#9 6.777   + libssh2                              1.11.0  h492db2e_0                conda-forge                                         Cached
-#9 6.777   + libsqlite                            3.47.0  hc4a20ef_0                conda-forge                                         Cached
-#9 6.777   + tk                                   8.6.13  h194ca79_0                conda-forge                                         Cached
-#9 6.777   + zlib                                  1.3.1  h86ecc28_2                conda-forge                                           96kB
-#9 6.777   + libgfortran-ng                       14.2.0  he9431aa_1                conda-forge                                           54kB
-#9 6.777   + libaec                                1.1.3  h2f0025b_0                conda-forge                                           35kB
-#9 6.777   + nlohmann_json                        3.11.3  h0a1ffab_1                conda-forge                                         Cached
-#9 6.777   + zstd                                  1.5.6  h02f22dd_0                conda-forge                                         Cached
-#9 6.777   + icu                                    75.1  hf9b3779_0                conda-forge                                         Cached
-#9 6.777   + libnghttp2                           1.64.0  hc8609a4_0                conda-forge                                         Cached
-#9 6.777   + libedit                        3.1.20191231  he28a2e2_2                conda-forge                                         Cached
-#9 6.777   + readline                                8.2  h8fc344f_1                conda-forge                                         Cached
-#9 6.777   + libopenblas                          0.3.28  pthreads_h9d3fd7e_0       conda-forge                                            5MB
-#9 6.777   + libboost                             1.85.0  h9fa81b4_4                conda-forge                                            3MB
-#9 6.777   + krb5                                 1.21.3  h50a48e9_0                conda-forge                                         Cached
-#9 6.777   + libblas                               3.9.0  25_linuxaarch64_openblas  conda-forge                                           16kB
-#9 6.777   + openblas                             0.3.28  pthreads_h395f137_0       conda-forge                                            5MB
-#9 6.777   + libboost-devel                       1.85.0  h37bb5a9_4                conda-forge                                           40kB
-#9 6.777   + libcurl                              8.10.1  h3ec0cbf_0                conda-forge                                         Cached
-#9 6.777   + libcblas                              3.9.0  25_linuxaarch64_openblas  conda-forge                                           16kB
-#9 6.777   + liblapack                             3.9.0  25_linuxaarch64_openblas  conda-forge                                           16kB
-#9 6.777   + boost-cpp                            1.85.0  hdad291f_4                conda-forge                                           18kB
-#9 6.777   + hdf5                                 1.14.3  nompi_hd1676c9_105        conda-forge                                            4MB
-#9 6.777   + tzdata                                2024b  hc8b5060_0                conda-forge                                         Cached
-#9 6.777   + libstdcxx-devel_linux-aarch64        13.3.0  h0c07274_101              conda-forge                                           12MB
-#9 6.777   + libgcc-devel_linux-aarch64           13.3.0  h0c07274_101              conda-forge                                            2MB
-#9 6.777   + kernel-headers_linux-aarch64         4.18.0  h05a177a_18               conda-forge                                            1MB
-#9 6.777   + sysroot_linux-aarch64                  2.17  h5b4a56d_18               conda-forge                                           16MB
-#9 6.777   + python                               3.13.0  h6bfe66a_100_cp313        conda-forge                                           13MB
-#9 6.777   + binutils_impl_linux-aarch64            2.43  h4c662bb_2                conda-forge                                            7MB
-#9 6.777   + binutils                               2.43  hf1166c9_2                conda-forge                                           34kB
-#9 6.777   + gcc_impl_linux-aarch64               13.3.0  hcdea9b6_1                conda-forge                                           62MB
-#9 6.777   + binutils_linux-aarch64                 2.43  hf1166c9_2                conda-forge                                           35kB
-#9 6.777   + gcc                                  13.3.0  h8a56e6e_1                conda-forge                                           54kB
-#9 6.777   + gxx_impl_linux-aarch64               13.3.0  h1211b58_1                conda-forge                                           13MB
-#9 6.777   + gcc_linux-aarch64                    13.3.0  h1cd514b_5                conda-forge                                           32kB
-#9 6.777   + gxx                                  13.3.0  h8a56e6e_1                conda-forge                                           54kB
-#9 6.777   + gxx_linux-aarch64                    13.3.0  h2864abd_5                conda-forge                                           30kB
-#9 6.777   + c-compiler                            1.8.0  h6561dab_1                conda-forge                                            6kB
-#9 6.777   + cxx-compiler                          1.8.0  heb6c788_1                conda-forge                                            6kB
-#9 6.777   + pip                                    24.2  pyh145f28c_1              conda-forge                                            1MB
-#9 6.777   + cached_property                       1.5.2  pyha770c72_1              conda-forge                                           11kB
-#9 6.777   + six                                  1.16.0  pyh6c4a22f_0              conda-forge                                           14kB
-#9 6.777   + zipp                                 3.20.2  pyhd8ed1ab_0              conda-forge                                           21kB
-#9 6.777   + parso                                 0.8.4  pyhd8ed1ab_0              conda-forge                                           75kB
-#9 6.777   + packaging                              24.1  pyhd8ed1ab_0              conda-forge                                         Cached
-#9 6.777   + ptyprocess                            0.7.0  pyhd3deb0d_0              conda-forge                                           17kB
-#9 6.777   + wcwidth                              0.2.13  pyhd8ed1ab_0              conda-forge                                           33kB
-#9 6.777   + pure_eval                             0.2.3  pyhd8ed1ab_0              conda-forge                                           17kB
-#9 6.777   + executing                             2.1.0  pyhd8ed1ab_0              conda-forge                                           28kB
-#9 6.777   + dill                                  0.3.9  pyhd8ed1ab_0              conda-forge                                           90kB
-#9 6.777   + typing_extensions                    4.12.2  pyha770c72_0              conda-forge                                           40kB
-#9 6.777   + traitlets                            5.14.3  pyhd8ed1ab_0              conda-forge                                          110kB
-#9 6.777   + pygments                             2.18.0  pyhd8ed1ab_0              conda-forge                                          879kB
-#9 6.777   + exceptiongroup                        1.2.2  pyhd8ed1ab_0              conda-forge                                           20kB
-#9 6.777   + decorator                             5.1.1  pyhd8ed1ab_0              conda-forge                                           12kB
-#9 6.777   + pickleshare                           0.7.5  py_1003                   conda-forge                                            9kB
-#9 6.777   + cached-property                       1.5.2  hd8ed1ab_1                conda-forge                                            4kB
-#9 6.777   + asttokens                             2.4.1  pyhd8ed1ab_0              conda-forge                                           29kB
-#9 6.777   + importlib_resources                   6.4.5  pyhd8ed1ab_0              conda-forge                                           33kB
-#9 6.777   + jedi                                 0.19.1  pyhd8ed1ab_0              conda-forge                                          841kB
-#9 6.777   + pexpect                               4.9.0  pyhd8ed1ab_0              conda-forge                                           54kB
-#9 6.777   + prompt-toolkit                       3.0.48  pyha770c72_0              conda-forge                                          270kB
-#9 6.777   + matplotlib-inline                     0.1.7  pyhd8ed1ab_0              conda-forge                                           15kB
-#9 6.777   + stack_data                            0.6.2  pyhd8ed1ab_0              conda-forge                                           26kB
-#9 6.777   + ipython                              8.29.0  pyh707e725_0              conda-forge                                          599kB
-#9 6.777   + ruamel.yaml.clib                      0.2.8  py313h31d5739_1           conda-forge                                          137kB
-#9 6.777   + numpy                                 2.1.2  py313h97d08ae_0           conda-forge                                            7MB
-#9 6.777   + pyyaml                                6.0.2  py313h31d5739_1           conda-forge                                          198kB
-#9 6.777   + ruamel.yaml                          0.18.6  py313h31d5739_1           conda-forge                                          268kB
-#9 6.777   + scipy                                1.14.1  py313h5414c24_1           conda-forge                                           18MB
-#9 6.777   + h5py                                 3.12.1  nompi_py313hde4f6ac_102   conda-forge                                            1MB
-#9 6.777   + fsl-installer                        3.15.2  py_0                      fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public       42kB
-#9 6.777   + fsl-sub                               2.8.4  py_0                      fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public       73kB
-#9 6.777   + nibabel                               5.3.2  pyha770c72_0              conda-forge                                            3MB
-#9 6.777   + fslpy                                3.21.1  pyhd8ed1ab_0              conda-forge                                            7MB
-#9 6.777   + fsl-base                             2408.0  py_0                      fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public      275kB
-#9 6.777   + fsl-misc_tcl                         2406.0  0                         fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public      249kB
-#9 6.777 
-#9 6.777   Summary:
-#9 6.777 
-#9 6.777   Install: 106 packages
-#9 6.777 
-#9 6.777   Total download: 401MB
-#9 6.777 
-#9 6.777 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-#9 6.777 
-#9 6.777 
-#9 41.74 
-#9 41.74 Looking for: ['make', 'cxx-compiler', 'boost-cpp', 'openblas', 'zlib', 'nlohmann_json', 'fsl-base', 'fsl-data_standard', 'fsl-misc_tcl']
-#9 41.74 
-#9 41.74 
-#9 41.74 Downloading and Extracting Packages: ...working... done
-#9 41.74 Preparing transaction: ...working... done
-#9 42.24 Verifying transaction: ...working... done
-#9 43.73 Executing transaction: ...working... done
-#9 52.36 
-#9 52.36 To activate this environment, use
-#9 52.36 
-#9 52.36      $ mamba activate /fsl
-#9 52.36 
-#9 52.36 To deactivate an active environment, use
-#9 52.36 
-#9 52.36      $ mamba deactivate
-#9 52.36 
-#9 DONE 52.8s
-
-#10 [ 5/24] RUN /opt/miniforge3/bin/activate ./fsl
-#10 DONE 0.9s
-
-#11 [ 6/24] RUN source ./fsl/etc/fslconf/fsl-devel.sh
-#11 DONE 0.8s
-
-#12 [ 7/24] RUN echo "# FSL Setup" >> ~/.bashrc
-#12 DONE 0.5s
-
-#13 [ 8/24] RUN echo "FSLDIR=./fsl" >> ~/.bashrc
-#13 DONE 0.5s
-
-#14 [ 9/24] RUN echo "PATH=./fsl/share/fsl/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" >> ~/.bashrc
-#14 DONE 0.5s
-
-#15 [10/24] RUN echo "export FSLDIR PATH" >> ~/.bashrc
-#15 DONE 0.5s
-
-#16 [11/24] RUN echo ". ./fsl/etc/fslconf/fsl-devel.sh" >> ~/.bashrc
-#16 DONE 0.5s
-
-#17 [12/24] COPY ./buildfsl.sh ./fsl/src
-#17 DONE 0.0s
-
-#18 [13/24] COPY ./fsldeps.txt ./fsl/src
-#18 DONE 0.0s
-
-#19 [14/24] RUN cd ./fsl/src; ./buildfsl.sh
-#19 0.495 ./buildfsl.sh: line 12: ./fsl/src/fsldeps.txt: No such file or directory
-#19 ERROR: process "/bin/bash --login -c cd $FSLDIR/src; ./buildfsl.sh" did not complete successfully: exit code: 1
+#8 [ 4/24] RUN /opt/miniforge3/bin/mamba create -y     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/     -c conda-forge     -p /fsl     make     cxx-compiler     boost-cpp     openblas     zlib     nlohmann_json     fsl-base     fsl-data_standard     fsl-misc_tcl     "fsl-misc_scripts==2111.0"
+#8 1.155 warning  libmamba Cache file "/opt/miniforge3/pkgs/cache/d9d93fba.json" was modified by another program
+#8 1.157 warning  libmamba Cache file "/opt/miniforge3/pkgs/cache/09cdf8bf.json" was modified by another program
+#8 7.315 
+#8 7.315 Looking for: ['make', 'cxx-compiler', 'boost-cpp', 'openblas', 'zlib', 'nlohmann_json', 'fsl-base', 'fsl-data_standard', 'fsl-misc_tcl', 'fsl-misc_scripts==2111.0']
+#8 7.315 
+#8 7.315 Could not solve for environment specs
+#8 7.315 The following package could not be installed
+#8 7.315 └─ fsl-misc_scripts 2111.0  is not installable because it requires
+#8 7.315    └─ fsl-misc_c >=2012.0 , which does not exist (perhaps a missing channel).
+#8 ERROR: process "/bin/bash --login -c /opt/miniforge3/bin/mamba create -y     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/     -c conda-forge     -p /fsl     make     cxx-compiler     boost-cpp     openblas     zlib     nlohmann_json     fsl-base     fsl-data_standard     fsl-misc_tcl     \"fsl-misc_scripts==2111.0\"" did not complete successfully: exit code: 1
 ------
- > [14/24] RUN cd ./fsl/src; ./buildfsl.sh:
-0.495 ./buildfsl.sh: line 12: ./fsl/src/fsldeps.txt: No such file or directory
+ > [ 4/24] RUN /opt/miniforge3/bin/mamba create -y     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/     -c conda-forge     -p /fsl     make     cxx-compiler     boost-cpp     openblas     zlib     nlohmann_json     fsl-base     fsl-data_standard     fsl-misc_tcl     "fsl-misc_scripts==2111.0":
+1.155 warning  libmamba Cache file "/opt/miniforge3/pkgs/cache/d9d93fba.json" was modified by another program
+1.157 warning  libmamba Cache file "/opt/miniforge3/pkgs/cache/09cdf8bf.json" was modified by another program
+7.315 
+7.315 Looking for: ['make', 'cxx-compiler', 'boost-cpp', 'openblas', 'zlib', 'nlohmann_json', 'fsl-base', 'fsl-data_standard', 'fsl-misc_tcl', 'fsl-misc_scripts==2111.0']
+7.315 
+7.315 Could not solve for environment specs
+7.315 The following package could not be installed
+7.315 └─ fsl-misc_scripts 2111.0  is not installable because it requires
+7.315    └─ fsl-misc_c >=2012.0 , which does not exist (perhaps a missing channel).
 ------
-Dockerfile:45
+Dockerfile:8
 --------------------
-  43 |     
-  44 |     # now run it
-  45 | >>> RUN cd $FSLDIR/src; ./buildfsl.sh
-  46 |     
-  47 |     # Copy eye.mat
+   7 |     
+   8 | >>> RUN /opt/miniforge3/bin/mamba create -y \
+   9 | >>>     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
+  10 | >>>     -c conda-forge \
+  11 | >>>     -p /fsl \
+  12 | >>>     make \
+  13 | >>>     cxx-compiler \
+  14 | >>>     boost-cpp \
+  15 | >>>     openblas \
+  16 | >>>     zlib \
+  17 | >>>     nlohmann_json \
+  18 | >>>     fsl-base \
+  19 | >>>     fsl-data_standard \
+  20 | >>>     fsl-misc_tcl \
+  21 | >>>     "fsl-misc_scripts==2111.0"
+  22 |     
 --------------------
-ERROR: failed to solve: process "/bin/bash --login -c cd $FSLDIR/src; ./buildfsl.sh" did not complete successfully: exit code: 1
+ERROR: failed to solve: process "/bin/bash --login -c /opt/miniforge3/bin/mamba create -y     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/     -c conda-forge     -p /fsl     make     cxx-compiler     boost-cpp     openblas     zlib     nlohmann_json     fsl-base     fsl-data_standard     fsl-misc_tcl     \"fsl-misc_scripts==2111.0\"" did not complete successfully: exit code: 1
 
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/1lli85bs0yn3va2788b6rle16
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/62411on98vqyjl2ypqn51fa9c
