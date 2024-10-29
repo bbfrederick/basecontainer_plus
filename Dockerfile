@@ -18,7 +18,7 @@ RUN /opt/miniforge3/bin/mamba create -y \
     fsl-base \
     fsl-data_standard \
     fsl-misc_tcl \
-    "fsl-misc_scripts==2111.0"
+    fsl-misc_scripts
 
 RUN /opt/miniforge3/bin/activate /fsl
 

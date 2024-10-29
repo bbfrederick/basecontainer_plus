@@ -1,72 +1,102 @@
 #0 building with "desktop-linux" instance using docker driver
 
 #1 [internal] load build definition from Dockerfile
-#1 transferring dockerfile: 2.13kB done
+#1 transferring dockerfile: 2.12kB done
 #1 DONE 0.0s
 
 #2 [internal] load metadata for docker.io/fredericklab/basecontainer:latest
-#2 DONE 0.0s
+#2 ...
 
-#3 [internal] load .dockerignore
-#3 transferring context: 2B done
+#3 [auth] fredericklab/basecontainer:pull token for registry-1.docker.io
 #3 DONE 0.0s
 
-#4 [ 1/24] FROM docker.io/fredericklab/basecontainer:latest@sha256:07f0b181ffd279ae9699cd27ef17e9e773539ed14f21833695bfbd027d8b79b5
-#4 resolve docker.io/fredericklab/basecontainer:latest@sha256:07f0b181ffd279ae9699cd27ef17e9e773539ed14f21833695bfbd027d8b79b5 done
+#2 [internal] load metadata for docker.io/fredericklab/basecontainer:latest
+#2 DONE 0.7s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
 #4 DONE 0.0s
 
-#5 [ 2/24] RUN pwd
-#5 CACHED
+#5 [ 1/24] FROM docker.io/fredericklab/basecontainer:latest@sha256:07f0b181ffd279ae9699cd27ef17e9e773539ed14f21833695bfbd027d8b79b5
+#5 DONE 0.0s
 
-#6 [ 3/24] RUN mkdir /fsl;chown default /fsl
-#6 CACHED
+#6 [internal] load build context
+#6 transferring context: 90B done
+#6 DONE 0.0s
 
-#7 [internal] load build context
-#7 transferring context: 314B done
-#7 DONE 0.0s
+#7 [10/24] RUN echo "export FSLDIR PATH" >> ~/.bashrc
+#7 CACHED
 
-#8 [ 4/24] RUN /opt/miniforge3/bin/mamba create -y     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/     -c conda-forge     -p /fsl     make     cxx-compiler     boost-cpp     openblas     zlib     nlohmann_json     fsl-base     fsl-data_standard     fsl-misc_tcl     "fsl-misc_scripts==2111.0"
-#8 1.155 warning  libmamba Cache file "/opt/miniforge3/pkgs/cache/d9d93fba.json" was modified by another program
-#8 1.157 warning  libmamba Cache file "/opt/miniforge3/pkgs/cache/09cdf8bf.json" was modified by another program
-#8 7.315 
-#8 7.315 Looking for: ['make', 'cxx-compiler', 'boost-cpp', 'openblas', 'zlib', 'nlohmann_json', 'fsl-base', 'fsl-data_standard', 'fsl-misc_tcl', 'fsl-misc_scripts==2111.0']
-#8 7.315 
-#8 7.315 Could not solve for environment specs
-#8 7.315 The following package could not be installed
-#8 7.315 └─ fsl-misc_scripts 2111.0  is not installable because it requires
-#8 7.315    └─ fsl-misc_c >=2012.0 , which does not exist (perhaps a missing channel).
-#8 ERROR: process "/bin/bash --login -c /opt/miniforge3/bin/mamba create -y     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/     -c conda-forge     -p /fsl     make     cxx-compiler     boost-cpp     openblas     zlib     nlohmann_json     fsl-base     fsl-data_standard     fsl-misc_tcl     \"fsl-misc_scripts==2111.0\"" did not complete successfully: exit code: 1
-------
- > [ 4/24] RUN /opt/miniforge3/bin/mamba create -y     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/     -c conda-forge     -p /fsl     make     cxx-compiler     boost-cpp     openblas     zlib     nlohmann_json     fsl-base     fsl-data_standard     fsl-misc_tcl     "fsl-misc_scripts==2111.0":
-1.155 warning  libmamba Cache file "/opt/miniforge3/pkgs/cache/d9d93fba.json" was modified by another program
-1.157 warning  libmamba Cache file "/opt/miniforge3/pkgs/cache/09cdf8bf.json" was modified by another program
-7.315 
-7.315 Looking for: ['make', 'cxx-compiler', 'boost-cpp', 'openblas', 'zlib', 'nlohmann_json', 'fsl-base', 'fsl-data_standard', 'fsl-misc_tcl', 'fsl-misc_scripts==2111.0']
-7.315 
-7.315 Could not solve for environment specs
-7.315 The following package could not be installed
-7.315 └─ fsl-misc_scripts 2111.0  is not installable because it requires
-7.315    └─ fsl-misc_c >=2012.0 , which does not exist (perhaps a missing channel).
-------
-Dockerfile:8
---------------------
-   7 |     
-   8 | >>> RUN /opt/miniforge3/bin/mamba create -y \
-   9 | >>>     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
-  10 | >>>     -c conda-forge \
-  11 | >>>     -p /fsl \
-  12 | >>>     make \
-  13 | >>>     cxx-compiler \
-  14 | >>>     boost-cpp \
-  15 | >>>     openblas \
-  16 | >>>     zlib \
-  17 | >>>     nlohmann_json \
-  18 | >>>     fsl-base \
-  19 | >>>     fsl-data_standard \
-  20 | >>>     fsl-misc_tcl \
-  21 | >>>     "fsl-misc_scripts==2111.0"
-  22 |     
---------------------
-ERROR: failed to solve: process "/bin/bash --login -c /opt/miniforge3/bin/mamba create -y     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/     -c conda-forge     -p /fsl     make     cxx-compiler     boost-cpp     openblas     zlib     nlohmann_json     fsl-base     fsl-data_standard     fsl-misc_tcl     \"fsl-misc_scripts==2111.0\"" did not complete successfully: exit code: 1
+#8 [14/24] RUN cd /fsl/src; ./buildfsl.sh
+#8 CACHED
 
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/62411on98vqyjl2ypqn51fa9c
+#9 [21/24] RUN echo "FSLDIR=/fsl" >> ~/.bashrc
+#9 CACHED
+
+#10 [ 3/24] RUN mkdir /fsl;chown default /fsl
+#10 CACHED
+
+#11 [18/24] RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#11 CACHED
+
+#12 [ 8/24] RUN echo "FSLDIR=/fsl" >> ~/.bashrc
+#12 CACHED
+
+#13 [12/24] COPY ./buildfsl.sh /fsl/src
+#13 CACHED
+
+#14 [ 4/24] RUN /opt/miniforge3/bin/mamba create -y     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/     -c conda-forge     -p /fsl     make     cxx-compiler     boost-cpp     openblas     zlib     nlohmann_json     fsl-base     fsl-data_standard     fsl-misc_tcl     fsl-misc_scripts
+#14 CACHED
+
+#15 [ 6/24] RUN source /fsl/etc/fslconf/fsl-devel.sh
+#15 CACHED
+
+#16 [23/24] RUN echo "export FSLDIR PATH" >> ~/.bashrc
+#16 CACHED
+
+#17 [13/24] COPY ./fsldeps.txt /fsl/src
+#17 CACHED
+
+#18 [11/24] RUN echo ". /fsl/etc/fslconf/fsl-devel.sh" >> ~/.bashrc
+#18 CACHED
+
+#19 [15/24] RUN mkdir -p /fsl/data/atlases/bin
+#19 CACHED
+
+#20 [ 7/24] RUN echo "# FSL Setup" >> ~/.bashrc
+#20 CACHED
+
+#21 [ 9/24] RUN echo "PATH=/fsl/share/fsl/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" >> ~/.bashrc
+#21 CACHED
+
+#22 [17/24] RUN chmod -R a+rx /fsl
+#22 CACHED
+
+#23 [16/24] COPY ./eye.mat /fsl/data/atlases/bin
+#23 CACHED
+
+#24 [20/24] RUN echo "# FSL Setup" >> ~/.bashrc
+#24 CACHED
+
+#25 [ 5/24] RUN /opt/miniforge3/bin/activate /fsl
+#25 CACHED
+
+#26 [22/24] RUN echo "PATH=/fsl/share/fsl/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/fsl/bin" >> ~/.bashrc
+#26 CACHED
+
+#27 [ 2/24] RUN pwd
+#27 CACHED
+
+#28 [19/24] RUN cd /root; TZ=GMT date "+%Y-%m-%d %H:%M:%S" > buildtime-basecontainer_plus
+#28 CACHED
+
+#29 [24/24] RUN echo ". /fsl/etc/fslconf/fsl-devel.sh" >> ~/.bashrc
+#29 CACHED
+
+#30 exporting to image
+#30 exporting layers done
+#30 writing image sha256:b1a6badaee7bab8f16ebb446ef46f4ad6eb8d2af20ba3031b6e5230913830964 done
+#30 naming to docker.io/fredericklab/basecontainer_plus:latest done
+#30 DONE 0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/5237srtqfjta5hhgoj2qqvunq

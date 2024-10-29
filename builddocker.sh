@@ -18,7 +18,7 @@ echo "version: $version"
 
 # run build
 docker buildx build . \
-    --platform linux/arm64 \
+    --platform linux/amd64 \
     --tag $USERNAME/$IMAGE:latest \
     --build-arg VERSION=$version \
     --build-arg BUILD_DATE=`date +"%Y%m%dT%H%M%S"` \
