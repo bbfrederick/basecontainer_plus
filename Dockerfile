@@ -1,7 +1,14 @@
 # Start from the latest basecontainer
 FROM fredericklab/basecontainer:latest
 
-RUN mamba create -y \
+USER root
+RUN pwd
+RUN mkdir ./fsl;chown default ./fsl
+
+# Switch to default user to install 
+#USER default
+
+RUN /opt/miniforge3/bin/mamba create -y \
     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
     -c conda-forge \
     -p ./fsl \
@@ -14,15 +21,21 @@ RUN mamba create -y \
     fsl-base \
     fsl-data_standard \
     fsl-misc_tcl 
+#    fsl-misc_scripts
 
-RUN /opt/conda/bin/activate /fsl
+RUN /opt/miniforge3/bin/activate ./fsl
 
-#RUN mamba install -y fsl-misc_scripts
-
-ENV FSLDIR=/fsl
-ENV FSLDEVDIR=/fsl
+ENV FSLDIR=./fsl
+ENV FSLDEVDIR=./fsl
 ENV FSLCONFDIR=$FSLDIR/config
 RUN source $FSLDIR/etc/fslconf/fsl-devel.sh
+
+# set up the bashrc file
+RUN echo "# FSL Setup" >> ~/.bashrc
+RUN echo "FSLDIR=./fsl" >> ~/.bashrc
+RUN echo "PATH=${FSLDIR}/share/fsl/bin:${PATH}" >> ~/.bashrc
+RUN echo "export FSLDIR PATH" >> ~/.bashrc
+RUN echo ". ${FSLDIR}/etc/fslconf/fsl-devel.sh" >> ~/.bashrc
 
 # Copy the install script
 COPY ./buildfsl.sh ${FSLDIR}/src
@@ -38,9 +51,23 @@ COPY ./eye.mat $FSLDIR/data/atlases/bin
 ENV PATH="${PATH}:${FSLDIR}/bin"
 
 ENV IS_DOCKER_8395080871=1
+
+# make everything world accessible
+RUN chmod -R a+rx ./fsl
+
+USER root
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN cd /root; TZ=GMT date "+%Y-%m-%d %H:%M:%S" > buildtime-basecontainer_plus
+
+USER default
+
+RUN echo "# FSL Setup" >> ~/.bashrc
+RUN echo "FSLDIR=/fsl" >> ~/.bashrc
+RUN echo "PATH=${FSLDIR}/share/fsl/bin:${PATH}" >> ~/.bashrc
+RUN echo "export FSLDIR PATH" >> ~/.bashrc
+RUN echo ". ${FSLDIR}/etc/fslconf/fsl-devel.sh" >> ~/.bashrc
 
 ARG VERSION
 ARG BUILD_DATE
