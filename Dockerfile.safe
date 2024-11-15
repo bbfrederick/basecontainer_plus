@@ -13,11 +13,10 @@ RUN mamba create -y \
     nlohmann_json \
     fsl-base \
     fsl-data_standard \
-    fsl-misc_tcl 
+    fsl-misc_tcl \
+    fsl-misc_scripts
 
 RUN /opt/miniforge3/bin/activate /fsl
-
-#RUN mamba install -y fsl-misc_scripts
 
 ENV FSLDIR=/fsl
 ENV FSLDEVDIR=/fsl
