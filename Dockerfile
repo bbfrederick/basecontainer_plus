@@ -1,5 +1,5 @@
 # Start from the latest basecontainer
-FROM fredericklab/basecontainer:latest-release
+FROM fredericklab/basecontainer:latest-release AS build-stage
 
 RUN mamba create -y \
     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
@@ -34,9 +34,20 @@ RUN cd $FSLDIR/src; ./buildfsl.sh
 RUN mkdir -p $FSLDIR/data/atlases/bin
 COPY ./eye.mat $FSLDIR/data/atlases/bin
 
+# Now copy built fsl into the deploy container
+FROM fredericklab/basecontainer:latest-release AS deploy-stage
+COPY --from=build-stage /fsl /fsl
+
+# set up fsl variables
+ENV FSLDIR=/fsl
+ENV FSLDEVDIR=/fsl
+ENV FSLCONFDIR=$FSLDIR/config
+RUN source $FSLDIR/etc/fslconf/fsl-devel.sh
+
+# set the PATH
 ENV PATH="${PATH}:${FSLDIR}/bin"
 
-ENV IS_DOCKER_8395080871=1
+ENV IN_DOCKER_CONTAINER=1
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN cd /root; TZ=GMT date "+%Y-%m-%d %H:%M:%S" > buildtime-basecontainer_plus
