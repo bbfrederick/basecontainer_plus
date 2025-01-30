@@ -1,5 +1,5 @@
 # Start from the latest basecontainer
-FROM fredericklab/basecontainer:v0.4.4 AS build-stage
+FROM fredericklab/basecontainer:v0.4.5 AS build-stage
 
 RUN mamba create -y \
     -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ \
