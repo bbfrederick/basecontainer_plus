@@ -67,6 +67,11 @@ RUN source $FSLDIR/etc/fslconf/fsl-devel.sh
 # set the PATH
 ENV PATH="${PATH}:${FSLDIR}/bin"
 
+# put it in the config file
+RUN echo 'PATH="${PATH}:${FSLDIR}/bin"' >> ~/.bashrc
+RUN echo "export PATH" >> ~/.bashrc
+RUN echo "source $FSLDIR/etc/fslconf/fsl-devel.sh" >> ~/.bashrc
+
 ENV IN_DOCKER_CONTAINER=1
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
