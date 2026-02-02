@@ -1,5 +1,8 @@
 # Release history
 
+## Version 0.1.0 (2/2/26)
+* FSL works on linux/arm now!  Installing only the necessary packages.
+
 ## Version 0.0.9 (7/8/24)
 * Rebuild on new basecontainer with certifi>=2024.7.4
 
