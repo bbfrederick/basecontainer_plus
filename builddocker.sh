@@ -16,9 +16,11 @@ python revversion.py
 version=`cat VERSION | sed 's/+/ /g' | sed 's/v//g' | awk '{print "v"$1}'`
 echo "version: $version"
 
+version=latest
+
 # run build
 docker buildx build . \
-    --platform linux/amd64 \
+    --platform linux/arm64,linux/amd64 \
     --tag $USERNAME/$IMAGE:latest \
     --build-arg VERSION=$version \
     --build-arg BUILD_DATE=`date +"%Y%m%dT%H%M%S"` \
