@@ -1,7 +1,9 @@
 # Release history
 
 ## Version 0.1.0 (2/2/26)
-* FSL works on linux/arm now!  Installing only the necessary packages.
+* FSL works on linux/arm now!  Reactivated linux/arm build.  Installing only the necessary tools, not the full install.
+* Enabled sbom and provenance on the container.
+* Build on the new revised basecontainer (0.7.0 as of now).
 
 ## Version 0.0.9 (7/8/24)
 * Rebuild on new basecontainer with certifi>=2024.7.4
