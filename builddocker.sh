@@ -22,10 +22,10 @@ version=latest
 docker buildx build . \
     --platform linux/arm64,linux/amd64 \
     --tag $USERNAME/$IMAGE:latest \
+    --tag $USERNAME/$IMAGE:$version \
     --build-arg VERSION=$version \
     --build-arg BUILD_DATE=`date +"%Y%m%dT%H%M%S"` \
-    --build-arg VCS_REF=`git rev-parse HEAD` \
-    2>&1 | tee build.log
+    --build-arg VCS_REF=`git rev-parse HEAD`
 
 #docker buildx build . \
 #    --platform linux/amd64 \
@@ -36,6 +36,7 @@ docker buildx build . \
 #    --build-arg VERSION=$version \
 #    --build-arg BUILD_DATE=`date +"%Y%m%dT%H%M%S"` \
 #    --build-arg VCS_REF=`git rev-parse HEAD`
+#    2>&1 | tee build.log
 #
 #docker push fredericklab/basecontainer_plus:latest
 #docker push fredericklab/basecontainer_plus:$version
